@@ -9,7 +9,6 @@ public class ShipControls : MonoBehaviour
     [SerializeField] private float _currentSpeed;
     private float _vertical;
     private float _horizontal;
-    [SerializeField] private float _maxRotate;
     [SerializeField] private GameObject _shipModel;
 
     // Start is called before the first frame update
@@ -50,11 +49,11 @@ public class ShipControls : MonoBehaviour
         Vector3 rotateH = new Vector3(0, _horizontal, 0);
         transform.Rotate(rotateH * _rotSpeed * Time.deltaTime);
 
-        Vector3 rotateV = new Vector3(_vertical, 0, 0);
+        Vector3 rotateV = new Vector3(0, 0, _vertical);
         transform.Rotate(rotateV * _rotSpeed * Time.deltaTime);
 
         //transform.Rotate(new Vector3(0, 0, -_horizontal * 0.2f), Space.Self);
 
-        transform.position += -transform.right * _currentSpeed * Time.deltaTime;
+        transform.position += -transform.right * _currentSpeed *_moveSpeed* Time.deltaTime;
     }
 }
